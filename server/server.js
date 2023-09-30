@@ -1,4 +1,5 @@
 // Set up about express or const
+const cors = require('cors')
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
@@ -6,6 +7,7 @@ const port = 8000
 
 // app Use
 app.use(bodyParser.json()) // For JSON body | POST Method
+app.use(cors())
 
 // Adding routes
 const listRouter = require('./routes/listRoute')
