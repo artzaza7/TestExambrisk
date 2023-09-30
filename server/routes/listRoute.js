@@ -5,7 +5,7 @@ const router = express.Router()
 // call Controller
 const listController = require('../controllers/listController')
 
-router.get('/', listController.getAllLists)
-// router.post('/', listController.getAllLists)
+router.get('/', listController.getAllList)
+router.post('/', listController.filterList)
 
 module.exports = router
