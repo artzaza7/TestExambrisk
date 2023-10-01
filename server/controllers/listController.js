@@ -7,12 +7,7 @@ async function getAllList(req, res) {
         if (list === null) {
             throw { statusCode: 500, message: 'Something Wrong' }
         }
-        const response = {
-            message: "Get All List Successful",
-            data: list,
-            status: 200
-        }
-        res.json(response);
+        res.status(200).json(list);
     } catch (error) {
         res.status(error.statusCode).json({
             message: error.message,
@@ -55,12 +50,8 @@ async function filterList(req, res) {
                                     const result = list.find((data) => {
                                         return data.title.includes(title)
                                     })
-                                    const response = {
-                                        message: "Post successful, title : " + title,
-                                        data: result,
-                                        status: 200
-                                    }
-                                    res.json(response);
+
+                                    res.status(200).json([result]);
                                 } catch (error) {
                                     res.status(error.statusCode).json({
                                         message: error.message,
