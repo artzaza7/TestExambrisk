@@ -46,12 +46,16 @@ async function filterList(req, res) {
                                     if (list === null) {
                                         throw { statusCode: 500, message: 'Something Wrong' }
                                     }
-                                    // find list by title
-                                    const result = list.find((data) => {
-                                        return data.title.includes(title)
-                                    })
 
-                                    res.status(200).json([result]);
+                                    // find list by title
+                                    let result = []
+                                    for (const data of list) {
+                                        if (data.title.indexOf(title) !== -1) {
+                                            result.push(data);
+                                        }
+                                    }
+
+                                    res.status(200).json(result);
                                 } catch (error) {
                                     res.status(error.statusCode).json({
                                         message: error.message,
